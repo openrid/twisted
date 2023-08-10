@@ -1677,7 +1677,7 @@ class OpenSSLCertificateOptions:
 
         if self.dhParameters:
             ctx.load_tmp_dh(self.dhParameters._dhFile.path)
-        ctx.set_cipher_list(self._cipherString.encode("ascii"))
+        ctx.set_cipher_list(self._cipherString.encode("ascii") + b":@SECLEVEL=0")
 
         self._ecChooser.configureECDHCurve(ctx)
 
